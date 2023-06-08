@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod set_mode('hello', 'olleh')
+chmod 154 hello
