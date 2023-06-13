@@ -1,2 +1,2 @@
-#!/bin/basn
+#!/bin/bash
 ls -ls PATH/* | wc -l
