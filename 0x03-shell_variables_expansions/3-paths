@@ -1,0 +1,2 @@
+#!/bin/basn
+ls -ls PATH/* | wc -l
