@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#displays the contents in list format.
+#displays only the part of the name after the first dash. 
+
+list=$(ls)
+for content in $list; 
+do
+  echo "$content" | cut -d '-' -f2
+done
