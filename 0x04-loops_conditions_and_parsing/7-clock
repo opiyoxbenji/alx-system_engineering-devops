@@ -1,30 +1,11 @@
 #!/usr/bin/env bash
 #displays the time for 12 hours and 59 minutes
 hour=0
-minute=1
-
-while [ $hour -le 12 ]; do
-    while [ $minute -le 59 ]; do
-        # Display the time in 12-hour format
-        if [ $hour -lt 10 ]; then
-            desired_hour="0$hour"
-        else
-            desired_hour="$hour"
-        fi
-
-        if [ $minute -lt 10 ]; then
-            desired_minute="0$minute"
-        else
-            desired_minute="$minute"
-        fi
-
-        echo "$desired_hour:$desired_minute"
-
-        # Increment the minute
-        minute=$((minute + 1))
-    done
-
-    # Reset the minute and increment the hour
+while [ $hour -lt 12 ]; do
     minute=1
-    hour=$((hour + 1))
+    while [ $minute -lt 60 ]; do
+        echo "$hour:$minute"
+        minute=$((minute+1))
+    done
+    hour=$((hour+1))
 done
