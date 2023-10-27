@@ -1,8 +1,3 @@
 #!/usr/bin/env bash
 #displays PID along with specific files
-pids=$(pgrep -f 'bash')
-
-for pid in $pids; do
-	name=$(ps -o cmd= -p $pid)
-	echo "PID: $pid, Process Name: $name"
-done
+top -bn 1 | awk '{print $1" "$12}' | grep "bash"
