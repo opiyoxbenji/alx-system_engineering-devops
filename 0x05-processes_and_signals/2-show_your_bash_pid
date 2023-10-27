@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#displays lines containing "bash" allowing me to get PID processes
+ps -A -H u | grep "bash"
