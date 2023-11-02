@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cp /etc/hosts/ ~/hosts.recent
+echo "127.0.0.2		localhost" > ~/hosts.recent
+echo "8.8.8.8		facebook.com" >> ~/hosts.recent
+cp -f ~/hosts.recent /etc/hosts
