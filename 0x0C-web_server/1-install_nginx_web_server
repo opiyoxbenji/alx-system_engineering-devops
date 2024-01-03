@@ -5,19 +5,28 @@
 ## Nginx queries at its root with a GET request
 ### Returns a page that contains the string Hello World!
 
+# Update package list and install Nginx
 apt-get -y update
 apt-get -y install nginx
 
-touch /var/www/html/index.html
+# Create the index.html file with "Hello World!"
 echo "Hello World!" > /var/www/html/index.html
 
-printf %s "server {
-    listen		80 default_server;
-    listen		[::]:80 default_server;
+# Configure Nginx default site
+cat > /etc/nginx/sites-available/default <<EOF
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-    root		/var/www/html;
-    index		index.html index.htm index.nginx-debian.html;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
 }
-" > /etc/nginx/sites-available/default
+EOF
 
+# Restart Nginx
 service nginx restart
+
