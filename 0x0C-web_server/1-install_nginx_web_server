@@ -1,32 +1,7 @@
 #!/usr/bin/env bash
-# Installs Nginx with the following configurations:
-## a server
-## Nginx listening on port 80
-## Nginx queries at its root with a GET request
-### Returns a page that contains the string Hello World!
-
-# Update package list and install Nginx
+# bash script to install nginx
 apt-get -y update
 apt-get -y install nginx
-
-# Create the index.html file with "Hello World!"
-echo "Hello World!" > /var/www/html/index.html
-
-# Configure Nginx default site
-cat > /etc/nginx/sites-available/default <<EOF
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-EOF
-
-# Restart Nginx
-service nginx restart
-
+mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.txt
+echo "Hello World!" > /usr/share/nginx/html/index.html
+sudo service nginx restart
