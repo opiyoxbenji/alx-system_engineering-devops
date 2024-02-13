@@ -12,7 +12,7 @@ def top_ten(subreddit):
     """
     url = "https://www.reddit.com/r/{}/hot/json".format(subreddit)
     headers = {
-        "User-Agent": "User Agent"
+        "User-Agent": "Dalvik/2.1.0"
     }
     params = {
         "limit": 10
