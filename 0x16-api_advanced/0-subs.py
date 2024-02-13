@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
     Returns the number of subs or 0 if the sbureddit is invalid
     """
     url = "https://reddit.com/r/{}/about.json".format(subreddit)
-    user_agent = "OpenSourceSubredditSubscriberInfo/2024"
+    user_agent = "2024"
     headers = {
             "User-Agent": user_agent
     }
