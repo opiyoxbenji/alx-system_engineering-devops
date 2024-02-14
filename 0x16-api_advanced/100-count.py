@@ -11,7 +11,7 @@ def count_words(subreddit, word_list, after=None, counts=None):
     Parses the title and counts occurences of given keywords
     """
     if counts is None:
-        counts =  {}
+        counts = {}
         headers = {"User-Agent": "Dalvik/2.1.0"}
         url = f"https://www.reddit.com/r/{subreddit}/hot.json"
         if after:
@@ -29,7 +29,8 @@ def count_words(subreddit, word_list, after=None, counts=None):
                     counts[word] = counts.get(word, 0) + title.count(word)
             next_page = data["data"].get("after")
             if next_page:
-                return count_words(subreddit, word_list, after=next_page, counts=counts)
+                return count_words(subreddit, word_list,
+                                   after=next_page, counts=counts)
             sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
             for word, count in sorted_counts:
                 print(f"{word}: {count}")
