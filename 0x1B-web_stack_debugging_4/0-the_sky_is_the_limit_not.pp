@@ -1,11 +1,13 @@
-# 
-exec { 'fix--for-nginx':
-  command => 'sed -i "s/15/4096/" /etc/default/nginx',
-  path    => '/usr/local/bin/:bin/'
-} ->
+# initial
+
+exec {'replace':
+  provider => shell,
+  command  => 'sudo sed -i "s/ULIMIT=\"-n 15\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
+  before   => Exec['restart'],
+}
 
 # restarts nginx
-exec { 'nginx-restart':
-  command => 'nginz restart',
-  path    => '/etc/init.d/'
+exec {'restart':
+  provider => shell,
+  command  => 'sudo service nginx restart',
 }
